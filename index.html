@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Reyme Solutions builds connected CRM, ERP, AI and Fintech solutions that help businesses work smarter and grow." />
+  <meta name="theme-color" content="#F36812" />
+  <title>Reyme Solutions | Technology That Moves Business Forward</title>
+  <style>
+    :root {
+      --ink: #232830;
+      --charcoal-deep: #14181F;
+      --muted: #5C6675;
+      --orange: #F36812;
+      --orange-dark: #D95709;
+      --orange-light: #FF9442;
+      --orange-soft: #FFF2E8;
+      --line: #ECE7E2;
+      --paper: #FAF8F6;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin: auto; }
+
+    /* Header & Brand */
+    .topbar {
+      height: 94px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+    }
+    .brand svg {
+      width: 116px;
+      height: 82px;
+      display: block;
+    }
+    .nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      color: #4A5462;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav a:hover { color: var(--orange); }
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 9px;
+      background: var(--ink);
+      color: var(--white) !important;
+      transition: 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--orange);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 82% 25%, #FFE7D6 0%, transparent 40%),
+                  linear-gradient(135deg, #FFF9F5 0%, #FFFFFF 58%, #FFF4EC 100%);
+      padding: 86px 0 96px;
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border: 1px solid #F7DFCE;
+      border-radius: 50%;
+      right: -120px;
+      top: -210px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 14px;
+      border: 1px solid #F5D9C6;
+      background: var(--white);
+      border-radius: 30px;
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 3px #F3681226;
+    }
+    .hero h1 {
+      font-size: clamp(42px, 5.2vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -2.8px;
+      margin: 24px 0 20px;
+      max-width: 650px;
+    }
+    .gradient-text {
+      background: linear-gradient(100deg, var(--orange), var(--orange-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 570px;
+      margin: 0 0 31px;
+    }
+    .actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 10px 22px #F3681238;
+    }
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px #F368124A;
+    }
+    .btn-secondary {
+      background: var(--white);
+      border: 1px solid #E2DDD8;
+      color: var(--ink);
+    }
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .hero-note {
+      font-size: 12px !important;
+      margin-top: 19px !important;
+      color: #848D99 !important;
+    }
+
+    /* Hero Brand Centerpiece */
+    .visual {
+      position: relative;
+      min-height: 410px;
+      display: grid;
+      place-items: center;
+    }
+    .orb {
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FFF0E5 65%, #FFE2CE 100%);
+      position: absolute;
+      box-shadow: inset -18px -20px 55px #F368121F, 0 25px 70px #1E242B12;
+    }
+    .orbit {
+      position: absolute;
+      width: 395px;
+      height: 190px;
+      border: 1px solid #F3C4A4;
+      border-radius: 50%;
+      transform: rotate(-28deg);
+    }
+    .orbit.two {
+      transform: rotate(58deg);
+      width: 365px;
+      height: 220px;
+      border-color: #D5DAE0;
+    }
+    .core {
+      z-index: 2;
+      border-radius: 28px;
+      background: var(--white);
+      border: 1px solid #F3E2D6;
+      padding: 18px 24px 14px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 22px 48px #1E242B1A, 0 8px 20px #F3681222;
+    }
+    .core svg {
+      width: 215px;
+      height: 152px;
+      display: block;
+    }
+    .float-card {
+      position: absolute;
+      z-index: 3;
+      background: var(--white);
+      border: 1px solid #EFEAE5;
+      border-radius: 13px;
+      padding: 12px 15px;
+      box-shadow: 0 12px 30px #1E242B12;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .float-card span {
+      display: block;
+      color: #7D8694;
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .fc1 { top: 34px; left: -2px; border-left: 3px solid var(--orange); }
+    .fc2 { right: -10px; top: 100px; border-left: 3px solid var(--ink); }
+    .fc3 { bottom: 38px; left: 16px; border-left: 3px solid var(--ink); }
+    .fc4 { right: 6px; bottom: 24px; border-left: 3px solid var(--orange); }
+
+    /* Trust Strip */
+    .trust {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      color: #7E8794;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: var(--white);
+    }
+    .trust strong {
+      color: var(--ink);
+      margin: 0 10px;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+
+    /* Services */
+    section { padding: 88px 0; }
+    .section-head {
+      text-align: center;
+      max-width: 670px;
+      margin: 0 auto 44px;
+    }
+    .kicker {
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    h2 {
+      font-size: clamp(30px, 3.5vw, 43px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin: 12px 0 14px;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .services { background: var(--paper); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #EBE6E1;
+      border-radius: 17px;
+      padding: 25px 22px;
+      min-height: 245px;
+      transition: 0.22s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: #F6C5A4;
+      box-shadow: 0 16px 35px #1E242B0E;
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--orange-soft);
+      color: var(--orange);
+      margin-bottom: 22px;
+    }
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .service-card:nth-child(even) .service-icon {
+      background: #F1F3F5;
+      color: var(--ink);
+    }
+    .service-card h3 {
+      font-size: 18px;
+      margin: 0 0 9px;
+      letter-spacing: -0.3px;
+    }
+    .service-card p {
+      font-size: 13px;
+      color: #66707E;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    /* Approach */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .approach-copy h2 { max-width: 440px; }
+    .approach-copy p { color: var(--muted); font-size: 16px; }
+    .points { display: grid; gap: 17px; margin-top: 27px; }
+    .point { display: flex; gap: 13px; align-items: flex-start; }
+    .check {
+      flex: 0 0 25px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--orange-soft);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .point strong { display: block; font-size: 14px; }
+    .point span {
+      display: block;
+      color: #747E8C;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+    .approach-panel {
+      background: linear-gradient(145deg, #1A1F26, #272E38);
+      color: var(--white);
+      border-radius: 22px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+      min-height: 330px;
+      box-shadow: 0 24px 50px #1E242B1F;
+    }
+    .approach-panel:after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border: 1px solid #F3681233;
+      border-radius: 50%;
+      right: -70px;
+      bottom: -110px;
+      box-shadow: 0 0 0 35px #F3681212, 0 0 0 70px #FFFFFF06;
+    }
+    .panel-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--orange-light);
+      font-weight: 800;
+    }
+    .approach-panel h3 {
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      max-width: 350px;
+      margin: 16px 0 28px;
+    }
+    .mini-stats {
+      display: flex;
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .mini-stats strong {
+      display: block;
+      font-size: 24px;
+      color: var(--orange-light);
+    }
+    .mini-stats span {
+      color: #C3CBD6;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* Contact & Footer */
+    .contact {
+      background: linear-gradient(120deg, #FFF4EC, #FFF9F5);
+      border-top: 1px solid var(--line);
+      padding: 72px 0;
+    }
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .contact h2 { margin: 0 0 10px; }
+    .contact p { margin: 0; color: var(--muted); }
+    .contact .btn { white-space: nowrap; }
+
+    .footer {
+      background: var(--charcoal-deep);
+      color: var(--white);
+      padding: 28px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-logo-badge {
+      background: var(--white);
+      padding: 7px 14px 5px;
+      border-radius: 13px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-logo-badge svg {
+      width: 96px;
+      height: 68px;
+      display: block;
+    }
+    .footer small {
+      color: #9AA3B0;
+      font-size: 12px;
+    }
+    .footer a.email {
+      color: #FFE4D1;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .footer a.email:hover {
+      color: var(--orange-light);
+    }
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { gap: 25px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .approach-grid { gap: 35px; }
+      .visual { transform: scale(0.9); }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 36px, 540px); }
+      .topbar { height: 82px; }
+      .brand svg { width: 100px; height: 70px; }
+      .nav { gap: 14px; }
+      .nav a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 9px 13px; font-size: 12px; }
+      .hero { padding: 64px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 5px; }
+      .hero h1 { font-size: 46px; letter-spacing: -2px; }
+      .hero p { font-size: 16px; }
+      .visual { min-height: 315px; transform: scale(0.82); margin: -5px 0 -15px; }
+      .trust strong { display: inline-block; margin: 8px 10px; }
+      .trust { line-height: 2; }
+      .services, section { padding: 65px 0; }
+      .section-head { margin-bottom: 30px; }
+      .service-grid { gap: 12px; }
+      .service-card { padding: 20px 16px; min-height: 235px; }
+      .service-card h3 { font-size: 16px; }
+      .approach-grid { grid-template-columns: 1fr; gap: 28px; }
+      .approach-panel { padding: 29px; min-height: 290px; }
+      .contact-inner { align-items: flex-start; flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-right { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .footer small { line-height: 1.6; }
+    }
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 40px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; }
+      .visual { margin-left: -18px; margin-right: -18px; transform: scale(0.72); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Reusable Reyme Solutions Vector Logo Definition -->
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="reymeNodeGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+        <stop offset="40%" stop-color="#FF9E44" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#F36812" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="reymeOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FF8E33"/>
+        <stop offset="55%" stop-color="#F36812"/>
+        <stop offset="100%" stop-color="#D44E06"/>
+      </linearGradient>
+      <g id="reyme-logo">
+        <!-- Left Charcoal Circuit Arc -->
+        <path d="M 105 44 L 84 52 L 56 76 L 46 98 L 38 134 L 46 170 L 56 192 L 84 216 L 105 224" fill="none" stroke="#2D343E" stroke-width="1.3"/>
+        <path d="M 56 76 L 52 112 L 38 134 L 52 156 L 56 192 M 38 134 L 54 134 M 46 98 L 64 102 M 46 170 L 64 166" fill="none" stroke="#2D343E" stroke-width="1.1"/>
+        <circle cx="84" cy="52" r="3.2" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.7"/>
+        <circle cx="56" cy="76" r="3.2" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.7"/>
+        <circle cx="46" cy="98" r="3.2" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.7"/>
+        <circle cx="38" cy="134" r="3.4" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.8"/>
+        <circle cx="46" cy="170" r="3.2" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.7"/>
+        <circle cx="56" cy="192" r="3.2" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.7"/>
+        <circle cx="84" cy="216" r="3.2" fill="#FFFFFF" stroke="#2D343E" stroke-width="1.7"/>
+
+        <!-- Right Orange Circuit Arc -->
+        <path d="M 295 44 L 316 52 L 344 76 L 354 98 L 362 134 L 354 170 L 344 192 L 316 216 L 295 224" fill="none" stroke="#F36812" stroke-width="1.3"/>
+        <path d="M 344 76 L 348 112 L 362 134 L 348 156 L 344 192 M 362 134 L 346 134 M 354 98 L 336 102 M 354 170 L 336 166" fill="none" stroke="#F36812" stroke-width="1.1"/>
+        <circle cx="316" cy="52" r="3.2" fill="#FFFFFF" stroke="#F36812" stroke-width="1.7"/>
+        <circle cx="344" cy="76" r="3.2" fill="#FFFFFF" stroke="#F36812" stroke-width="1.7"/>
+        <circle cx="354" cy="98" r="3.2" fill="#FFFFFF" stroke="#F36812" stroke-width="1.7"/>
+        <circle cx="362" cy="134" r="3.4" fill="#FFFFFF" stroke="#F36812" stroke-width="1.8"/>
+        <circle cx="354" cy="170" r="3.2" fill="#FFFFFF" stroke="#F36812" stroke-width="1.7"/>
+        <circle cx="344" cy="192" r="3.2" fill="#FFFFFF" stroke="#F36812" stroke-width="1.7"/>
+        <circle cx="316" cy="216" r="3.2" fill="#FFFFFF" stroke="#F36812" stroke-width="1.7"/>
+
+        <!-- Under-crossover Charcoal Facets (Top-Left to Bottom-Right) -->
+        <polygon points="162,62 198,102 152,108" fill="#2A313C"/>
+        <polygon points="168,134 198,102 222,134" fill="#1D222A"/>
+        <polygon points="168,134 222,134 198,166" fill="#262D38"/>
+        <polygon points="198,166 222,134 248,160" fill="#1E242D"/>
+        <polygon points="198,166 248,160 238,206" fill="#2C3440"/>
+        <polygon points="238,206 248,160 274,174" fill="#1D222A"/>
+        <polygon points="238,206 274,174 276,216" fill="#252C36"/>
+
+        <!-- Left Loop Faceted Low-Poly Charcoal Mesh -->
+        <polygon points="54,134 68,86 94,134" fill="#232933"/>
+        <polygon points="68,86 104,106 94,134" fill="#323B48"/>
+        <polygon points="68,86 92,62 104,106" fill="#29303B"/>
+        <polygon points="92,62 124,52 104,106" fill="#37404F"/>
+        <polygon points="124,52 126,94 104,106" fill="#222832"/>
+        <polygon points="124,52 162,62 126,94" fill="#2F3744"/>
+        <polygon points="162,62 152,108 126,94" fill="#1E232C"/>
+        <polygon points="54,134 94,134 68,182" fill="#1B2028"/>
+        <polygon points="68,182 94,134 104,162" fill="#29303C"/>
+        <polygon points="68,182 104,162 92,206" fill="#212731"/>
+        <polygon points="92,206 104,162 126,174" fill="#2E3643"/>
+        <polygon points="92,206 126,174 124,216" fill="#1D222B"/>
+        <polygon points="124,216 126,174 152,160" fill="#282F3B"/>
+        <polygon points="124,216 152,160 162,206" fill="#1F252E"/>
+        <polygon points="152,160 168,134 162,206" fill="#2C3441"/>
+
+        <!-- Diagonal Orange Ribbon & Right Loop Faceted Mesh -->
+        <polygon points="162,206 168,134 198,166" fill="#D95307"/>
+        <polygon points="168,134 198,102 198,166" fill="#F36812"/>
+        <polygon points="198,102 232,134 198,166" fill="#E35909"/>
+        <polygon points="198,102 238,62 232,134" fill="#FF8429"/>
+        <polygon points="232,134 238,62 248,108" fill="#F36812"/>
+        <polygon points="238,62 276,52 248,108" fill="#FF983D"/>
+        <polygon points="276,52 274,94 248,108" fill="#F56D16"/>
+        <polygon points="276,52 308,62 274,94" fill="#FF8E33"/>
+        <polygon points="308,62 332,86 274,94" fill="#FA761E"/>
+        <!-- Signature Dark Charcoal 3D Fold inside Right Loop -->
+        <polygon points="274,94 332,86 298,106" fill="#242A34"/>
+        <polygon points="298,106 332,86 306,134" fill="#1B2028"/>
+        <polygon points="306,134 332,86 322,156" fill="#2C3440"/>
+        <polygon points="296,162 306,134 322,156" fill="#1E242D"/>
+        <!-- Lower Right Bright Orange Facets -->
+        <polygon points="332,86 346,134 322,156" fill="#F36812"/>
+        <polygon points="346,134 332,182 322,156" fill="#E05507"/>
+        <polygon points="322,156 332,182 296,162" fill="#FF8326"/>
+        <polygon points="296,162 332,182 308,206" fill="#F36812"/>
+        <polygon points="296,162 308,206 274,174" fill="#D95307"/>
+        <polygon points="274,174 308,206 276,216" fill="#F77119"/>
+
+        <!-- Upward Stepped Growth Arrow inside Right Loop Hole -->
+        <path d="M 248 160 L 269 139 L 277 147 L 293 130" fill="none" stroke="#282E38" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <polygon points="299,123 285,126 296,137" fill="#282E38"/>
+
+        <!-- Constellation Network Lines & Glowing Star Nodes -->
+        <g stroke="#FFB36B" stroke-width="0.75" stroke-opacity="0.72" fill="none">
+          <path d="M 68 86 L 104 106 L 136 62 L 158 86 L 198 134 L 238 96 L 262 72 L 308 62"/>
+          <path d="M 94 134 L 126 94 L 152 108 L 198 134 L 232 134 L 274 174 L 318 182 L 346 134"/>
+          <path d="M 92 206 L 126 174 L 152 160 L 198 134"/>
+        </g>
+        <circle cx="84" cy="102" r="5" fill="url(#reymeNodeGlow)"/>
+        <circle cx="84" cy="102" r="1.7" fill="#FFF7EB"/>
+        <circle cx="136" cy="62" r="6" fill="url(#reymeNodeGlow)"/>
+        <circle cx="136" cy="62" r="2" fill="#FFFFFF"/>
+        <circle cx="158" cy="86" r="5.5" fill="url(#reymeNodeGlow)"/>
+        <circle cx="158" cy="86" r="1.8" fill="#FFF7EB"/>
+        <circle cx="198" cy="134" r="7" fill="url(#reymeNodeGlow)"/>
+        <circle cx="198" cy="134" r="2.2" fill="#FFFFFF"/>
+        <circle cx="238" cy="96" r="6" fill="url(#reymeNodeGlow)"/>
+        <circle cx="238" cy="96" r="2" fill="#FFFFFF"/>
+        <circle cx="262" cy="72" r="5" fill="url(#reymeNodeGlow)"/>
+        <circle cx="262" cy="72" r="1.7" fill="#FFF7EB"/>
+        <circle cx="318" cy="182" r="6" fill="url(#reymeNodeGlow)"/>
+        <circle cx="318" cy="182" r="2" fill="#FFFFFF"/>
+        <circle cx="274" cy="202" r="5" fill="url(#reymeNodeGlow)"/>
+        <circle cx="274" cy="202" r="1.7" fill="#FFF7EB"/>
+
+        <!-- Exact Reyme solutions Typography -->
+        <text x="200" y="253" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-weight="800" font-size="37" letter-spacing="-1.2" fill="#232830">Reyme</text>
+        <text x="200" y="276" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" font-weight="700" font-size="21" letter-spacing="0.2" fill="#F36812">solutions</text>
+      </g>
+    </defs>
+  </svg>
+
+  <header class="wrap topbar">
+    <a class="brand" href="#home" aria-label="Reyme Solutions home">
+      <svg viewBox="28 38 344 245" role="img" aria-label="Reyme Solutions Logo">
+        <use href="#reyme-logo"/>
+      </svg>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#about">Why Reyme</a>
+      <a class="nav-cta" href="mailto:reyme.solutions@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Technology for what's next</div>
+          <h1>Build smarter.<br><span class="gradient-text">Move business</span><br>forward.</h1>
+          <p>We help businesses simplify operations, connect their teams and unlock new possibilities with technology built around the way they work.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#services">Explore our services <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="mailto:reyme.solutions@gmail.com">Talk to our team</a>
+          </div>
+          <p class="hero-note">Practical technology. Thoughtful execution. Measurable progress.</p>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <div class="orb"></div>
+          <div class="orbit"></div>
+          <div class="orbit two"></div>
+          <div class="core">
+            <svg viewBox="28 38 344 245">
+              <use href="#reyme-logo"/>
+            </svg>
+          </div>
+          <div class="float-card fc1">CRM<span>Elevate client connections</span></div>
+          <div class="float-card fc2">ERP<span>Streamline operations</span></div>
+          <div class="float-card fc3">AI<span>Next-gen automation</span></div>
+          <div class="float-card fc4">FINTECH<span>Financial operations</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust">One technology partner for <strong>connected business solutions</strong></div>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">What we do</div>
+          <h2>Technology that works<br>for your business.</h2>
+          <p>From customer relationships to intelligent financial operations, we create digital solutions that help your business run with clarity and confidence.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>CRM Solutions</h3>
+            <p>Elevate client connections and drive growth with lead management, sales pipelines, customer engagement and actionable insights.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h3>ERP Solutions</h3>
+            <p>Streamline operations and optimize efficiency with integrated systems for finance, inventory, people and reporting.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3 14.2 8.8 20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2L12 3Z"/><path d="m19 14 1.2 2.8L23 18l-2.8 1.2L19 22l-1.2-2.8L15 18l2.8-1.2L19 14Z"/></svg>
+            </div>
+            <h3>AI Solutions</h3>
+            <p>Unlock next-gen automation and intelligent insights with AI-powered assistants, predictive analytics and smarter workflows.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M6 15h4"/><path d="M15 15h3"/></svg>
+            </div>
+            <h3>Fintech Solutions</h3>
+            <p>Empower your financial operations with secure payment workflows, real-time analytics and scalable digital finance tools.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap approach-grid">
+        <div class="approach-copy">
+          <div class="kicker">The Reyme approach</div>
+          <h2>Good technology starts with understanding.</h2>
+          <p>Every business is different. We focus on understanding your goals first, then shaping the right digital solution to support your next stage of growth.</p>
+          <div class="points">
+            <div class="point">
+              <div class="check">✓</div>
+              <div>
+                <strong>Built around your needs</strong>
+                <span>Solutions aligned with your processes, people and priorities.</span>
+              </div>
+            </div>
+            <div class="point">
+              <div class="check">✓</div>
+              <div>
+                <strong>Designed to work together</strong>
+                <span>Connected systems that reduce friction and duplicated effort.</span>
+              </div>
+            </div>
+            <div class="point">
+              <div class="check">✓</div>
+              <div>
+                <strong>Ready to grow with you</strong>
+                <span>Flexible technology that can evolve as your business changes.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="approach-panel">
+          <div class="panel-label">REYME SOLUTIONS</div>
+          <h3>Your vision deserves technology that can keep up.</h3>
+          <div class="mini-stats">
+            <div><strong>01</strong><span>Understand</span></div>
+            <div><strong>02</strong><span>Build</span></div>
+            <div><strong>03</strong><span>Grow</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-inner">
+        <div>
+          <div class="kicker">Start a conversation</div>
+          <h2>Let's build what's next.</h2>
+          <p>Tell us what you want to improve. We'll be glad to hear about your project.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:reyme.solutions@gmail.com?subject=Business%20Enquiry%20-%20Reyme%20Solutions">Contact Reyme Solutions <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="footer-logo-badge" href="#home" aria-label="Reyme Solutions home">
+        <svg viewBox="28 38 344 245" role="img" aria-label="Reyme Solutions Logo">
+          <use href="#reyme-logo"/>
+        </svg>
+      </a>
+      <div class="footer-right">
+        <a class="email" href="mailto:reyme.solutions@gmail.com">reyme.solutions@gmail.com</a>
+        <small>© <span id="year"></span> Reyme Solutions. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
